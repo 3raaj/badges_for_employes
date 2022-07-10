@@ -17,11 +17,11 @@ class EmployeeAdapter extends TypeAdapter<Employee> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Employee(
+      gender: fields[4] as Gender?,
       id: fields[0] as int,
       name: fields[1] as String,
       lastName: fields[2] as String,
       badgesAwarded: (fields[3] as Map?)?.cast<User, Badge>(),
-        gender: fields[4] as Gender?
     );
   }
 

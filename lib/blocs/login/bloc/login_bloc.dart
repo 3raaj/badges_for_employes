@@ -1,7 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:badges_for_employes/common/exception.dart';
 import 'package:badges_for_employes/data/repo/client_repository.dart';
-import 'package:badges_for_employes/data/source/user/user_data_source.dart';
 import 'package:badges_for_employes/model/employee.dart';
 import 'package:badges_for_employes/model/user.dart';
 import 'package:bloc/bloc.dart';
@@ -44,6 +43,18 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           }
         } catch (e) {
           throw Exception(AppException(message: 'loginFailed'));
+        }
+      } else if (event is MakeAnAccountBottonClicked) {
+        emit(ShowSignUpPage(isClientLoginMode));
+      } else if (event is RegisterAccountClicked) {
+        if (hiveUserBox.isEmpty ||
+            !hiveUserBox.values
+                .any((element) => element.userName == event.user.userName)) {
+          // I dont use ISINBOX
+          await hiveUserBox.add(event.user);
+          emit(SignUpSuccess(isClientLoginMode));
+        } else {
+          emit(ErrorCreateNewUser(isClientLoginMode));
         }
       }
     });

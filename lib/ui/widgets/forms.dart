@@ -58,7 +58,7 @@ class CustomInputField extends StatelessWidget {
                 cursorColor: themeData.disabledColor.withAlpha(150),
                 controller: textEditingController,
                 decoration: InputDecoration(
-                  
+                  border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(horizontal: width*0.03),
                   hintText: hint,
                

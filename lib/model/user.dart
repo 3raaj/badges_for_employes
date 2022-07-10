@@ -2,7 +2,7 @@ import 'package:badges_for_employes/model/roles/userRole.dart';
 import 'package:hive_flutter/adapters.dart';
 part 'user.g.dart';
 @HiveType(typeId: 0)
-class User {
+class User extends HiveObject {
   @HiveField(0)
   final UserRole userRole;
   @HiveField(1)

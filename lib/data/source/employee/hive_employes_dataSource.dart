@@ -7,39 +7,41 @@ class HiveEmployesDataSource {
   final Box<Employee> hiveEmployeeBox;
 
   HiveEmployesDataSource(this.hiveEmployeeBox);
-  Future<void> deleteOrUpdateBadge(
-      {required int employeeId,
+  Future<Employee> deleteOrUpdateBadge(
+      {required Employee employee,
       required Badge badge,
       required User user}) async {
-    (hiveEmployeeBox.values.toList() as List<Employee>)
-        .forEach((employee) async {
-      if (employee.id == employeeId) {
-        //It is possible that the badge is empty, so we will check
-        if (employee.badgesAwarded != null) {
-          //It may not be null, but only this user is not among the votes.
-
-          if (employee.badgesAwarded!.containsKey(user)) {
-            employee.badgesAwarded!.update(user, (value) {
-              return value = badge;
-            });
-            await hiveEmployeeBox.put(employee.id,employee);
-            print(employee.badgesAwarded);
-          }
-        } else {
-          final Map<User, Badge> map = {};
-          map[user] = badge;
-          print(map);
-          await hiveEmployeeBox.delete(employee.id);
-          print(hiveEmployeeBox.values.toList());
-          final Employee newemployee = Employee(
-              gender: employee.gender,
-              id: employee.id,
-              name: employee.name,
-              lastName: employee.lastName,
-              badgesAwarded: map);
-          await hiveEmployeeBox.add(newemployee);
+    if (badgesAwarded(employee) != null &&
+        badgesAwarded(employee)!.containsKey(user)) {
+      badgesAwarded(employee)!.update(user, (value) {
+        {
+          return badge;
         }
-      }
-    });
+      });
+      employee.save();
+      return employee;
+    } else if (badgesAwarded(employee) != null &&
+        !badgesAwarded(employee)!.containsKey(user)) {
+      badgesAwarded(employee)![user] = badge;
+      employee.save();
+      return employee;
+    } else {
+      // employee.badgesAwarded!.addAll(<User, Badge>{user: badge});
+      final Employee newEmployeeWithBadgeAwardedNotNull = Employee(
+          gender: employee.gender,
+          id: employee.id,
+          lastName: employee.lastName,
+          name: employee.name,
+          badgesAwarded: <User, Badge>{user: badge});
+      employee.delete();
+      hiveEmployeeBox.add(newEmployeeWithBadgeAwardedNotNull);
+      newEmployeeWithBadgeAwardedNotNull.save();
+
+      return newEmployeeWithBadgeAwardedNotNull;
+    }
   }
+
+  Map<User, Badge>? badgesAwarded(Employee employee) => hiveEmployeeBox.values
+      .firstWhere((element) => element.id == employee.id)
+      .badgesAwarded;
 }

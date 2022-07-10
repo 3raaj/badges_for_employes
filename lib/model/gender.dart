@@ -1,7 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 part 'gender.g.dart';
 @HiveType(typeId: 7)
-enum Gender {
+enum Gender  {
   @HiveField(0)
   man,
   @HiveField(1)

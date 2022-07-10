@@ -3,7 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 part 'badge.g.dart';
 
 @HiveType(typeId: 6)
-enum Badge {
+enum Badge  {
   @HiveField(0)
   batman,
   @HiveField(1)

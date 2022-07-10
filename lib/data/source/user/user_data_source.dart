@@ -54,14 +54,14 @@ Future<void> awardBadge(
     required Employee employee,
     required Badge badge}) async {
  await  HiveEmployesDataSource(Hive.box<Employee>(employesBoxName))
-      .deleteOrUpdateBadge(employeeId: employee.id, badge: badge, user: user);
+      .deleteOrUpdateBadge(employee: employee, badge: badge, user: user);
 }
 
   @override
   Future<List<Employee>> getEmployes({required User user})async {
      // optional , I havent any online dataBase so I can Remove some details after send in to UserLayer such as employee all badges.
     final List<Employee> employesList =
-      await   _hiveEmployesDataSource.hiveEmployeeBox.values.toList();
+         _hiveEmployesDataSource.hiveEmployeeBox.values.toList();
     // TODO: implement awardBadge
      return employesList;
   }

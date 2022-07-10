@@ -1,14 +1,12 @@
-import 'package:badges_for_employes/common/constants.dart';
 import 'package:badges_for_employes/data/repo/client_repository.dart';
 import 'package:badges_for_employes/model/badge.dart';
 import 'package:badges_for_employes/model/employee.dart';
 import 'package:badges_for_employes/model/gender.dart';
 import 'package:badges_for_employes/model/user.dart';
-import 'package:badges_for_employes/ui/screens/login.dart';
+import 'package:badges_for_employes/ui/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/adapters.dart';
 
 import '../../blocs/client/bloc/client_bloc.dart';
 
@@ -29,7 +27,9 @@ class UserHomeScreen extends StatelessWidget {
         clientBloc.stream.forEach((state) {
           if (state is BadgeSuccessfulAwarded) {
             ScaffoldMessenger.of(context).showSnackBar(
+              
               SnackBar(
+                duration: Duration(milliseconds: 300),
                 content: Text(
                     'You awarded ${state.employee.name} the ${state.badge.name} badge!'),
               ),
@@ -40,10 +40,13 @@ class UserHomeScreen extends StatelessWidget {
       },
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.arrow_back),
+
           onPressed: () {
+          
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => LoginPage(),
+                builder: (context) => const LoginPage(),
               ),
             );
           },
@@ -183,6 +186,7 @@ class UserHomeScreen extends StatelessWidget {
                   );
                 } else {
                   return const SizedBox(
+                    // ignore: unnecessary_const
                     child: const Text('unknown state / only for developer '),
                   );
                 }
@@ -239,5 +243,8 @@ class UserHomeScreen extends StatelessWidget {
       });
       return badgeAwardedByThisUser;
     }
+    else {
+      return null;
+    } 
   }
 }

@@ -1,7 +1,5 @@
-import 'package:badges_for_employes/common/exception.dart';
 import 'package:badges_for_employes/common/functions.dart';
 import 'package:badges_for_employes/model/user.dart';
-import 'package:flutter/rendering.dart';
 
 mixin ValidateLogin {
   // check user password -> if we have a user with that ID so do something . else do something...

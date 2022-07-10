@@ -18,5 +18,5 @@ bool checkPassword(
 }
 
 User searchUser(List<User> dataBaseUserList, String userName) {
-  return dataBaseUserList.firstWhere((element) => element.userName == userName.toLowerCase());
+  return dataBaseUserList.firstWhere((element) => element.userName.toLowerCase() == userName.toLowerCase());
 }

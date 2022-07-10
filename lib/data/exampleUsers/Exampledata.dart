@@ -45,6 +45,42 @@ final ExampleData exampleData = ExampleData(
       name: 'AmirAli',
       lastName: 'Torabi',
     ),
+    Employee(
+     gender: Gender.wooman,
+      id: 5,
+      name: 'elhaam',
+      lastName: 'Paayeste',
+    ),
+    Employee(
+     gender: Gender.wooman,
+      id: 6,
+      name: 'Nazanin',
+      lastName: 'Moraadi',
+    ),
+    Employee(
+     gender: Gender.man,
+      id: 7,
+      name: 'Haadi',
+      lastName: 'Babaian',
+    ),
+      Employee(
+     gender: Gender.wooman,
+      id: 8,
+      name: 'Asma',
+      lastName: 'kheiri',
+    ),
+      Employee(
+     gender: Gender.man,
+      id: 9,
+      name: 'Ebrahim',
+      lastName: 'Khodadadi',
+    ),
+     Employee(
+     gender: Gender.wooman,
+      id: 10,
+      name: 'Atena',
+      lastName: 'Moradi',
+    ),
   ],
 );
 final List<User> usersList = [

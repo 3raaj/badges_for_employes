@@ -10,8 +10,10 @@ abstract class AdminState extends Equatable {
 class AdminInitial extends AdminState {}
 
 class ShowInFormationToAdmin extends AdminState{
-  final  Map<Badge,EbEntity>? topEmployes; 
   final User currentAdmin;
+  final List<Employee>? employes ; 
+  final List<GridColumn> gridColumn; 
+  final EmployeeDataSource employeeDataSource; 
+  const ShowInFormationToAdmin( {this.employes,  required this.currentAdmin, required this.gridColumn,required this.employeeDataSource, }); 
 
-  ShowInFormationToAdmin({ this.topEmployes,required this.currentAdmin}); 
 }

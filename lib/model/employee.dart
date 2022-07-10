@@ -6,7 +6,7 @@ import 'badge.dart';
 part 'employee.g.dart';
 
 @HiveType(typeId: 1)
-class Employee {
+class Employee extends HiveObject {
   @HiveField(0)
   final int id;
   @HiveField(1)

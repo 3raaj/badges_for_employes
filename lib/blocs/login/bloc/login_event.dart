@@ -20,3 +20,11 @@ class AuthButtonClicked extends LoginEvent {
   const AuthButtonClicked({required this.userName, required this.password});
  
 }
+class MakeAnAccountBottonClicked extends LoginEvent{
+
+}
+class RegisterAccountClicked extends LoginEvent{
+  final User user ;
+
+  const RegisterAccountClicked({required this.user}); 
+}

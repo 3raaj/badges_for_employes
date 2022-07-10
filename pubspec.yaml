@@ -38,6 +38,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
+  syncfusion_flutter_datagrid: ^20.2.36
 
 dev_dependencies:
   flutter_test:
