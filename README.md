@@ -5,7 +5,7 @@ Users award badges.
 At the same time, the admin can see the changes and recognize the best employees based on the badges received.
 
 ----
-
+![Logo](https://s6.uupload.ir/files/badges_vd33.gif)
 ![Logo](https://s6.uupload.ir/files/screenshot_1657468584_gq7.png)
 
 
